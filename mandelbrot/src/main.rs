@@ -1,15 +1,16 @@
-use std::str::FromStr;
-extern crate num;
-use num::Complex;
+extern crate crossbeam;
 extern crate image;
+extern crate num;
+
 use image::png::PNGEncoder;
 use image::ColorType;
+use num::Complex;
 use std::fs::File;
 use std::io::Result;
-use std::time::{Duration, Instant};
-extern crate crossbeam;
 use std::io::Write;
+use std::str::FromStr;
 use std::sync::Mutex;
+use std::time::{Duration, Instant};
 
 fn parse_pair<T: FromStr>(s: &str, separator: char) -> Option<(T, T)> {
     match s.find(separator) {
@@ -113,7 +114,7 @@ fn main() {
 
     let mut pixels = vec![0; bounds.0 * bounds.1];
 
-    for threads in [1, 2, 3, 4, 5, 6, 7, 8].iter() {
+    for threads in [1, 2, 3, 4].iter() {
         let band_rows = bounds.1 / 400;
 
         let dt = measure_elapsed_time(|| {
