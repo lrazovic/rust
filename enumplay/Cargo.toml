@@ -1,0 +1,7 @@
+[package]
+name = "enumplay"
+version = "0.1.0"
+authors = ["lrazovic"]
+edition = "2018"
+
+[dependencies]
