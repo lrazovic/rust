@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     let z = vec![1,2,3];
@@ -27,5 +29,11 @@ fn main() {
     println!("lenght of s: {}", s.len());
     for c in s.chars() {
         println!("{}", c);
+    }
+    let teams = vec![String::from("Vikings"), String::from("Lions")];
+    let initial_scores = vec![0,0];
+    let scores: HashMap <_,_> = teams.iter().zip(initial_scores.iter()).collect();
+    for (key,value) in &scores {
+        println!("{}: {}", key,value);
     }
 }
