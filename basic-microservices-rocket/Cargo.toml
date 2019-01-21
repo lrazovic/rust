@@ -17,4 +17,4 @@ dotenv = "0.13.0"
 [dependencies.rocket_contrib]
 version = "*"
 default-features = false
-features = ["json"]
+features = ["json", "serve"]

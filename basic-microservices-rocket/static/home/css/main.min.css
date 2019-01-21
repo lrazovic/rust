@@ -1,0 +1,21 @@
+body {
+  background-color: #F8F8F8;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . ." ". Main Main ." ". . . ." "Photo Photo . ." "Photo Photo . .";
+}
+
+.Main {
+  grid-area: Main;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: brown;
+}
+
+.Photo {
+  grid-area: Photo;
+}

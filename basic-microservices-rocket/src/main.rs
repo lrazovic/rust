@@ -17,6 +17,8 @@ pub mod schema;
 
 use models::Hero;
 use rocket_contrib::json::{Json, JsonValue};
+use rocket_contrib::serve::StaticFiles;
+use rocket::Request;
 
 #[post("/", data = "<hero>")]
 fn create(hero: Json<Hero>, connection: db::Connection) -> Json<Hero> {
@@ -46,10 +48,17 @@ fn delete(id: i32, connection: db::Connection) -> JsonValue {
     json!({ "success": Hero::delete(id, &connection) })
 }
 
+#[catch(404)]
+fn not_found(req: &Request) -> String {
+    format!("I couldn't find '{}'. Try something else?", req.uri())
+}
+
 fn main() {
     rocket::ignite()
         .mount("/hero", routes![create, update, delete])
         .mount("/heroes", routes![read])
+        .mount("/", StaticFiles::from("static/home"))
+        .register(catchers![not_found])
         .manage(db::connect())
         .launch();
 }
