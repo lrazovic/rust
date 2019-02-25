@@ -1,4 +1,5 @@
 use std::env;
+use std::fs;
 use std::process;
 
 fn main() {
@@ -9,6 +10,8 @@ fn main() {
 	}
 	let query = &args[1];
 	let file = &args[2];
-	print!("Searching {:?} ",query);
+	let contents = fs::read_to_string(file).expect("Something went wrong reading the file");
+	print!("Searching {:?} ", query);
 	println!("in File {}", file);
+	println!("With text:\n{}", contents);
 }
