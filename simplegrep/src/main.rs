@@ -9,13 +9,12 @@ use simplegrep::Config;
 4. Handling the error if run returns an error
 */
 
+
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let config = Config::new(&args);
-	print!("Searching {:?} ", config.query);
-	println!("in File {}", config.file);
 	if let Err(e) = simplegrep::run(config) {
-		println!("Application error: {}", e);
+		eprintln!("Application error: {}", e);
 		process::exit(-1)
 	}
 }
