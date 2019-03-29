@@ -5,5 +5,4 @@ authors = ["Leonardo Razovic <lrazovic@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-hyper = "0.12.21"
-futures = "0.1.25"
+hyper = "0.12.25"
